@@ -1,9 +1,6 @@
 package de.tum.in.ase.eist.store;
 
-import de.tum.in.ase.eist.ecommerce.AdvertisementController;
-import de.tum.in.ase.eist.ecommerce.Order;
-import de.tum.in.ase.eist.ecommerce.OrderController;
-import de.tum.in.ase.eist.ecommerce.ShippingController;
+import de.tum.in.ase.eist.ecommerce.*;
 
 public class Cinema {
 
@@ -11,17 +8,18 @@ public class Cinema {
 	private final String address;
 	private final String name;
 	private final int id;
-	private final OrderController orderController;
-	private final ShippingController shippingController;
-	private final AdvertisementController advertisementController;
+//	private final OrderController orderController;
+//	private final ShippingController shippingController;
+//	private final AdvertisementController advertisementController;
+	private ECommerceFacade eCommerceFacade;
 
 	public Cinema(String address, String name) {
 		this.address = address;
 		this.name = name;
 		this.id = generateCinemaId();
-		this.orderController = new OrderController();
-		this.shippingController = new ShippingController();
-		this.advertisementController = new AdvertisementController();
+//		this.orderController = new OrderController();
+//		this.shippingController = new ShippingController();
+//		this.advertisementController = new AdvertisementController();
 	}
 
 	public void startLiveStream(int ageRestriction) {
@@ -37,14 +35,15 @@ public class Cinema {
 	}
 
 	public void advertise(int ageRestriction) {
-		advertisementController.playAdvertisement(ageRestriction);
+		eCommerceFacade.playAdvertisement(ageRestriction);
 	}
 
 	public void deliverPopcorn(String shippingAddress) {
-		Order order = orderController.retrieveLatestOrder(id);
-		orderController.processOrder(order);
-		order.setShipping(shippingController.createShipping(shippingAddress));
-		shippingController.shipOrder(order);
+		Order order = eCommerceFacade.retrieveLatestOrder(id);
+		eCommerceFacade.processOrder(order);
+		//order.setShipping(shippingController.createShipping(shippingAddress));
+		eCommerceFacade.shipOrder(order,shippingAddress);
+		//shippingController.shipOrder(order);
 	}
 
 	@Override

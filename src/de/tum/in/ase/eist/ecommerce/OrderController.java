@@ -3,7 +3,7 @@ package de.tum.in.ase.eist.ecommerce;
 import java.util.ArrayList;
 import java.util.List;
 
-//TODO 1 Add a new class ECommerceFacade in the package ecommerce.
+//DONE 1 Add a new class ECommerceFacade in the package ecommerce.
 //TODO 2 Implement all public methods of the OrderController and the AdvertisementController in the facade.
 //TODO 3 Implement a new shipOrder method in the OrderController according to the problem statement on Artemis.
 public class OrderController {

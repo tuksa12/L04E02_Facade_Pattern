@@ -1,5 +1,6 @@
 package de.tum.in.ase.eist.store;
 
+import de.tum.in.ase.eist.ecommerce.ECommerceFacade;
 import de.tum.in.ase.eist.ecommerce.Order;
 import de.tum.in.ase.eist.ecommerce.OrderController;
 import de.tum.in.ase.eist.ecommerce.ShippingController;
@@ -15,24 +16,26 @@ public class BookStore {
 	private final String address;
 	private final String name;
 	private final int id;
-	private final OrderController orderController;
-	private final ShippingController shippingController;
+//	private final OrderController orderController;
+//	private final ShippingController shippingController;
+	private ECommerceFacade eCommerceFacade;
 
 	public BookStore(String address, String name) {
 		this.address = address;
 		this.name = name;
 		this.id = generateBookStoreId();
-		this.orderController = new OrderController();
-		this.shippingController = new ShippingController();
+//		this.orderController = new OrderController();
+//		this.shippingController = new ShippingController();
 	}
 
 	public void acceptOrder() {
 		System.out.println("Accepting shipping order.");
 		String shippingAddress = "Leopoldstraße " + generateRandomHouseNumber();
-		Order order = orderController.retrieveLatestOrder(id);
-		orderController.processOrder(order);
-		order.setShipping(shippingController.createShipping(shippingAddress));
-		shippingController.shipOrder(order);
+		Order order = eCommerceFacade.retrieveLatestOrder(id);
+		eCommerceFacade.processOrder(order);
+		//order.setShipping(shippingController.createShipping(shippingAddress));
+		//shippingController.shipOrder(order);
+		eCommerceFacade.shipOrder(order,shippingAddress);
 	}
 
 	public String getAddress() {
