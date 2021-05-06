@@ -17,6 +17,7 @@ public class Cinema {
 		this.address = address;
 		this.name = name;
 		this.id = generateCinemaId();
+		this.eCommerceFacade = new ECommerceFacade();
 //		this.orderController = new OrderController();
 //		this.shippingController = new ShippingController();
 //		this.advertisementController = new AdvertisementController();

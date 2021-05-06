@@ -31,6 +31,7 @@ public class ECommerceFacade {
 
     public void shipOrder(Order order, String address){
         order.setShipping(shippingController.createShipping(address));
+        shippingController.shipOrder(order);
     }
 
 }
