@@ -10,6 +10,12 @@ public class ECommerceFacade {
     public OrderController orderController;
     public ShippingController shippingController;
 
+    public ECommerceFacade() {
+        this.advertisementController = new AdvertisementController();
+        this.orderController = new OrderController();
+        this.shippingController = new ShippingController();
+    }
+
     public void processOrder(Order order) {
         orderController.processOrder(order);
     }
