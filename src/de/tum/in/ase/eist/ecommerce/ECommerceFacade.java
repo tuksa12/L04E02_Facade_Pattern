@@ -6,9 +6,9 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class ECommerceFacade {
 
-    public AdvertisementController advertisementController;
-    public OrderController orderController;
-    public ShippingController shippingController;
+    private final AdvertisementController advertisementController;
+    private final OrderController orderController;
+    private final ShippingController shippingController;
 
     public ECommerceFacade() {
         this.advertisementController = new AdvertisementController();
